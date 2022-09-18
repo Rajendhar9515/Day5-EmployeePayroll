@@ -6,7 +6,19 @@ public class EmployeeDTO {
     String lastName;
     String gender;
     String department;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    String message;
     long empSalary;
+
+
     public String getFirstName() {
         return firstName;
     }

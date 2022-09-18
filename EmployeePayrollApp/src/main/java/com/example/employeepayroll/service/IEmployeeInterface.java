@@ -4,4 +4,12 @@ import com.example.employeepayroll.dto.EmployeeDTO;
 
 public interface IEmployeeInterface {
     Object saveAll(EmployeeDTO employeeDTO);
+
+    Object display();
+
+    Object findById(int id);
+
+    Object update(EmployeeDTO employeeDTO, int id);
+
+    Object deleteById(int id);
 }

@@ -27,30 +27,28 @@ public class EmployeePayrollService implements IEmployeeInterface {
         return employeeRepo.save(employeeDetails);
     }
 
-    public EmployeeDetails update(EmployeeDetails employeeDetails, int id){
-        EmployeeDetails empData = employeeRepo.findById(id).get();
+    public EmployeeDetails update(EmployeeDTO employeeDTO, int id){
         if(employeeRepo.findById(id).isPresent()) {
-            empData.setFirstName(employeeDetails.getFirstName());
-            empData.setLastName(employeeDetails.getLastName());
-            empData.setDepartment(employeeDetails.getDepartment());
-            empData.setGender(employeeDetails.getGender());
-            //empData.setId(id);
-            empData.setEmpSalary(employeeDetails.getEmpSalary());
-            empData.setMessage(employeeDetails.getMessage());
+            EmployeeDetails empData = employeeRepo.findById(id).get();
+            empData.setFirstName(employeeDTO.getFirstName());
+            empData.setLastName(employeeDTO.getLastName());
+            empData.setDepartment(employeeDTO.getDepartment());
+            empData.setGender(employeeDTO.getGender());
+            empData.setEmpSalary(employeeDTO.getEmpSalary());
+            empData.setMessage(employeeDTO.getMessage());
             return employeeRepo.save(empData);
         } else {
             return new EmployeeDetails("user id not found");
         }
     }
-    public String deleteById(int id) {
+    public Boolean deleteById(int id) {
         Optional<EmployeeDetails> userId = employeeRepo.findById(id);
         if(userId.isPresent()) {
             employeeRepo.deleteById(id);
-            return "This id data deleted successfully";
+            return true;
         } else {
-            return "This id is not found";
+            return false;
         }
-
     }
     public Optional<EmployeeDetails> findById(int id) {
         return employeeRepo.findById(id);

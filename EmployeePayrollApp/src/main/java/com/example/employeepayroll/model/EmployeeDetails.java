@@ -48,7 +48,6 @@ public class EmployeeDetails {
 
     public EmployeeDetails(String message) {
         this.message = message;
-
     }
 
     public EmployeeDetails(){

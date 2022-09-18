@@ -18,6 +18,10 @@ public class ResponseDTO {
         this.data =data;
 
     }
+    public  ResponseDTO(String message){
+        this.message = message;
+    }
+
     public String getMessage() {
         return message;
     }
